@@ -8,7 +8,7 @@ spec:
   project: default
 
   source:
-    repoURL: git@github.com:YOUR_USER/cluster-gitops.git
+    repoURL: git@github.com:Lt-DogFish/k3s.git
     targetRevision: main
     path: apps/portfolio/base
 
