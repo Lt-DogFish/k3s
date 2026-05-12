@@ -10,7 +10,7 @@ data:
     <head>
       <title>Status</title>
     </head>
-    <body style="background-color: #FF00FF; display:flex; justify-content:center; align-items:center; height:100vh;">
+    <body style="background-color: #FFFF00; display:flex; justify-content:center; align-items:center; height:100vh;">
       <h1>Ingress-Successful</h1>
     </body>
     </html>
