@@ -1,3 +1,31 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: portfolio-site
+#   namespace: portfolio
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: portfolio-site
+#   template:
+#     metadata:
+#       labels:
+#         app: portfolio-site
+#     spec:
+#       containers:
+#       - name: nginx
+#         image: nginx:alpine
+#         ports:
+#         - containerPort: 80
+#         volumeMounts:
+#         - name: html-volume
+#           mountPath: /usr/share/nginx/html
+#       volumes:
+#       - name: html-volume
+#         configMap:
+#           name: portfolio-html
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,14 +42,11 @@ spec:
         app: portfolio-site
     spec:
       containers:
-      - name: nginx
-        image: nginx:alpine
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - name: html-volume
-          mountPath: /usr/share/nginx/html
-      volumes:
-      - name: html-volume
-        configMap:
-          name: portfolio-html
+        - name: portfolio-site
+
+          image: ghcr.io/lt-dogfish/portfoliosite:1e42b42def56e7bd8a46222a765028a647c3ed2c
+
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 80
