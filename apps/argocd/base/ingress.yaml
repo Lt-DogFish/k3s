@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-ingress
+  namespace: argocd
+  annotations:
+    traefik.ingress.kubernetes.io/backend-protocol: "http"
+    traefik.ingress.kubernetes.io/redirect-entry-point: "websecure"
+    traefik.ingress.kubernetes.io/forwarded-headers-insecure: "true"
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: argocd.ravijey.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80
