@@ -6,6 +6,8 @@ metadata:
 
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
+    traefik.ingress.kubernetes.io/service.serversscheme: http
+    traefik.ingress.kubernetes.io/preserve-host: "true"
 
 spec:
   ingressClassName: traefik
