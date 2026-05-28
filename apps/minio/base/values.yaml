@@ -1,0 +1,26 @@
+mode: standalone
+
+rootUser: admin
+rootPassword: password
+
+persistence:
+  enabled: true
+  size: 50Gi
+
+resources:
+  requests:
+    memory: 512Mi
+    cpu: 250m
+
+service:
+  type: ClusterIP
+
+# IMPORTANT: disable built-in ingress since you manage it manually
+ingress:
+  enabled: false
+
+# Optional but useful for OTA firmware hosting
+buckets:
+  - name: firmware
+    policy: public
+    purge: false

@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minio-ravijey-ingress
+  namespace: minio
+
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+
+spec:
+  ingressClassName: traefik
+
+  tls:
+    - hosts:
+        - minio.ravijey.com
+      secretName: minio-tls
+
+  rules:
+    - host: minio.ravijey.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: minio
+                port:
+                  number: 9000
