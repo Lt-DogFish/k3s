@@ -15,7 +15,7 @@ spec:
     spec:
       # 1. Allow the pod onto tainted weaker node
       tolerations:
-      - key: "kubernetes.io/hostname"
+      - key: "node-role.kubernetes.io/master"
         operator: "Exists"
         effect: "NoSchedule"
 
