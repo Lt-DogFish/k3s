@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mqtt-broker
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:Lt-DogFish/k3s.git
+    targetRevision: main
+    path: apps/mqtt/base
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: iot
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true # create the 'iot' namespace automatically if it doesn't exist

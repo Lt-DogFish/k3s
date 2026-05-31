@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mosquitto
+  namespace: iot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mosquitto
+  template:
+    metadata:
+      labels:
+        app: mosquitto
+    spec:
+      # 1. Allow the pod onto tainted weaker node
+      tolerations:
+      - key: "kubernetes.io/hostname"
+        operator: "Exists"
+        effect: "NoSchedule"
+
+      # 2. Force the pod to land specifically on the laptop
+      nodeSelector:
+        kubernetes.io/hostname: node3
+
+      containers:
+      - name: mosquitto
+        image: eclipse-mosquitto:2.0.18
+        ports:
+        - containerPort: 1883
+          name: mqtt
+        resources:
+          limits:
+            cpu: "100m"
+            memory: "64Mi"
+          requests:
+            cpu: "25m"
+            memory: "32Mi"
+        volumeMounts:
+        - name: config-volume
+          mountPath: /mosquitto/config/mosquitto.conf
+          subPath: mosquitto.conf
+      volumes:
+      - name: config-volume
+        configMap:
+          name: mosquitto-config
