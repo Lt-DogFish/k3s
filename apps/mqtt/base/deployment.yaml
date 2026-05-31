@@ -15,9 +15,7 @@ spec:
     spec:
       # 1. Allow the pod onto tainted weaker node
       tolerations:
-      - key: "node-role.kubernetes.io/master"
-        operator: "Exists"
-        effect: "NoSchedule"
+        operator: "Exists" #match any and all taints and nuke run
 
       # 2. Force the pod to land specifically on the laptop
       nodeSelector:
