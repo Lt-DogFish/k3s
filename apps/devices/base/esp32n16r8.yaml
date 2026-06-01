@@ -3,6 +3,13 @@ kind: ESP32Device
 metadata:
   name: esp32n16r8
   namespace: esp32
+  ownerReferences:
+    - apiVersion: v1
+      kind: Node
+      name: node3                  # Binds the physical chip visually to your laptop node!
+      uid: "8428231d-b69b-428b-a87e-8314756caf9c" # You can fetch this via: kubectl get node node3 -o jsonpath='{.metadata.uid}'
+      controller: true
+      blockOwnerDeletion: false
 spec:
   macAddress: "24:0A:C4:XX:XX:XX"
   targetFirmwareVersion: "v2.1.0"
