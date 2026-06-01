@@ -1,0 +1,11 @@
+apiVersion: iot.homelab/v1alpha1
+kind: ESP32Device
+metadata:
+  name: esp32n16r8
+  namespace: esp32
+spec:
+  macAddress: "24:0A:C4:XX:XX:XX"
+  targetFirmwareVersion: "v2.1.0"
+status:
+  currentFirmwareVersion: "v2.0.4" # Your Python Operator updates this live via MQTT
+  connectionState: "Online"

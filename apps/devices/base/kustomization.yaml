@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: esp32
+
+resources:
+  - esp32device-crd.yaml
+  - esp32n16r8.yaml
