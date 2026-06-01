@@ -44,7 +44,7 @@ spec:
       containers:
         - name: portfolio-site
 
-          image: ghcr.io/lt-dogfish/portfoliosite:v31
+          image: ghcr.io/lt-dogfish/portfoliosite:v33
 
           imagePullPolicy: Always
 
