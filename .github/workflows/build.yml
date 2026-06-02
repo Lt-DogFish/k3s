@@ -47,9 +47,9 @@ jobs:
           tags: |
             ghcr.io/lt-dogfish/python-operator:latest
             ghcr.io/lt-dogfish/python-operator:${{ steps.version.outputs.version }}
-     #       ./apps/devices/python-operator/
-
-     # - name: Push image
-     #   run: |
-     #     docker push ghcr.io/lt-dogfish/python-operator:latest
-     #     docker push ghcr.io/lt-dogfish/python-operator:
+          # --- NEW CACHING MECHANISM ---
+          # Looks for existing layers in GitHub's dedicated action cache
+          cache-from: type=gha
+          # Writes the fresh compiled layers back to the GitHub cache for the next run
+          # 'mode=max' ensures that intermediate layers (like the compiled wheel files) are cached
+          cache-to: type=gha,mode=max

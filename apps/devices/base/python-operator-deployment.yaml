@@ -18,7 +18,7 @@ spec:
       serviceAccountName: esp32-python-operator-sa
       containers:
         - name: python-operator
-          image: ghcr.io/lt-dogfish/python-operator:v9
+          image: ghcr.io/lt-dogfish/python-operator:v10
           imagePullPolicy: Always
           resources:
             limits:
