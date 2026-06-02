@@ -32,12 +32,12 @@ jobs:
       - name: Build and Push Image
         run: |
           docker build \
-            -t ghcr.io/${{ github.actor }}/python-operator:latest \
-            -t ghcr.io/${{ github.actor }}/python-operator:${{ steps.version.outputs.version }} \
+            -t ghcr.io/lt-dogfish/python-operator:latest \
+            -t ghcr.io/lt-dogfish/python-operator:${{ steps.version.outputs.version }} \
             -f ./apps/devices/python-operator/Dockerfile \
             ./apps/devices/python-operator/
 
       - name: Push image
         run: |
-          docker push ghcr.io/${{ github.actor }}/python-operator:latest
-          docker push ghcr.io/${{ github.actor }}/python-operator:${{ steps.version.outputs.version }}
+          docker push ghcr.io/lt-dogfish/python-operator:latest
+          docker push ghcr.io/lt-dogfish/python-operator:${{ steps.version.outputs.version }}
