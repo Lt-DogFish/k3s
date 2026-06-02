@@ -47,7 +47,7 @@ jobs:
           tags: |
             ghcr.io/lt-dogfish/python-operator:latest
             ghcr.io/lt-dogfish/python-operator:${{ steps.version.outputs.version }}
-            ./apps/devices/python-operator/
+     #       ./apps/devices/python-operator/
 
      # - name: Push image
      #   run: |
