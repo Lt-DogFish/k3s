@@ -1,31 +1,3 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: portfolio-site
-#   namespace: portfolio
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: portfolio-site
-#   template:
-#     metadata:
-#       labels:
-#         app: portfolio-site
-#     spec:
-#       containers:
-#       - name: nginx
-#         image: nginx:alpine
-#         ports:
-#         - containerPort: 80
-#         volumeMounts:
-#         - name: html-volume
-#           mountPath: /usr/share/nginx/html
-#       volumes:
-#       - name: html-volume
-#         configMap:
-#           name: portfolio-html
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:

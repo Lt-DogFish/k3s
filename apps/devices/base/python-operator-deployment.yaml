@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: esp32-python-operator
+  namespace: esp32
+  labels:
+    app: esp32-python-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: esp32-python-operator
+  template:
+    metadata:
+      labels:
+        app: esp32-python-operator
+    spec:
+      serviceAccountName: esp32-python-operator-sa
+      containers:
+        - name: python-operator
+          image: ghcr.io/lt-dogfish/python-operator:v2
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
+            requests:
+              cpu: "50m"
+              memory: "64Mi"

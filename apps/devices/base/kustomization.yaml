@@ -6,3 +6,4 @@ namespace: esp32
 resources:
   - esp32device-crd.yaml
   - esp32n16r8.yaml
+  - python-operator-deployment.yaml
