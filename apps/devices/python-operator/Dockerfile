@@ -13,6 +13,6 @@ RUN pip install --no-cache-dir \
     kubernetes==30.1.0 \
     paho-mqtt==1.6.1
 
-COPY operator.py .
+COPY esp32_operator.py .
 
-CMD ["python", "-u", "operator.py"]
+CMD ["python", "-u", "esp32_operator.py"]
