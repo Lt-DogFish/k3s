@@ -1,2 +1,3 @@
 # Force GitHub to detect and count yaml files as YAML code
 apps/**/*.yaml linguist-detectable=true
+apps/*/base/*.yaml linguist-detectable=true
