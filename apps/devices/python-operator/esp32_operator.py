@@ -1,7 +1,7 @@
 import json
 import sys
-import paho.mqtt.client as mqtt
-from kubernetes import client, config, watch
+import paho.mqtt.client as mqtt # type: ignore
+from kubernetes import client, config, watch # type: ignore
 
 # --- MQTT Callback Functions ---
 
