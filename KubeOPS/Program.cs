@@ -5,8 +5,8 @@ Console.WriteLine("Starting Local C# GitOps Generation Engine...");
 
 var factories = new List<IAppFactory>
 {
-    new PortfolioFactory(),
-    new MinioFactory()
+    new PortfolioFactory()
+    //new MinioFactory()
 };
 
 foreach (var factory in factories)

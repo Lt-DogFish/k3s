@@ -10,7 +10,6 @@ public class MinioFactory : IAppFactory
 
 
 
-
 	//interface method
 	public void Generate()
 	{
