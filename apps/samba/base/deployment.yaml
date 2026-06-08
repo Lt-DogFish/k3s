@@ -16,7 +16,7 @@ spec:
         app: samba-server
     spec:
       nodeSelector:
-        kubernetes.io/hostname: node2 # Forces the container to live with the disk
+        kubernetes.io/hostname: node2-48ecc894 # Forces the container to live with the disk
       containers:
       - name: samba
         image: dperson/samba:latest
