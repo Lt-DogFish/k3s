@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: samba-local-pv
+spec:
+  capacity:
+    storage: 1.8Ti
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /mnt/cloud-storage # Exact location on node2
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node2 # Directs it strictly to node2
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: samba-local-pvc
+  namespace: samba
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-storage
+  resources:
+    requests:
+      storage: 1.8Ti

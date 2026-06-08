@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: samba-server
+  namespace: samba
+  labels:
+    app: samba-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: samba-server
+  template:
+    metadata:
+      labels:
+        app: samba-server
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: node2 # Forces the container to live with the disk
+      containers:
+      - name: samba
+        image: dperson/samba:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        # Configures User: admin, Password: password
+        - name: USER
+          value: "admin;password"
+        # Share Syntax: [ShareName];[Path];[Browseable];[ReadOnly];[ForceUser];[AllowedUsers]
+        - name: SHARE
+          value: "CloudDrive;/share;yes;no;no;admin"
+        - name: TZ
+          value: "UTC"
+        ports:
+        - containerPort: 445
+          name: smb
+        volumeMounts:
+        - name: storage-volume
+          mountPath: /share
+      volumes:
+      - name: storage-volume
+        persistentVolumeClaim:
+          claimName: samba-local-pvc
