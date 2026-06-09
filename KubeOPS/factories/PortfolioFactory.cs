@@ -59,5 +59,6 @@ public class PortfolioFactory : IAppFactory
         var yaml = serializer.Serialize(obj);
         File.WriteAllText(Path.Combine(_targetDir, filename), yaml);
         Console.WriteLine($"Manifest created at: {Path.Combine(_targetDir, filename)}");
+        Console.WriteLine("Done");
     }
 }
