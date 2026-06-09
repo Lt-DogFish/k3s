@@ -9,10 +9,10 @@ namespace Factories;
 public class PortfolioFactory : IAppFactory
 {
 
-	private readonly string _targetDir = Path.Combine(PathResolver.GetRootDirectory(), "KubeOPS", "dev", "portfolio");
+    private readonly string _targetDir = Path.Combine(PathResolver.GetRootDirectory(), "KubeOPS", "dev", "portfolio");
 
 
-	public void Generate()
+    public void Generate()
     {
         Directory.CreateDirectory(_targetDir);
 
@@ -47,7 +47,7 @@ public class PortfolioFactory : IAppFactory
         WriteYaml(deployment, "deployment.yaml");
         Console.WriteLine("  └─ Generated Portfolio manifests successfully.");
     }
-    
+
     private void WriteYaml(object obj, string filename)
     {
         // YamlDotNet converts Kubernetes model properties to lowercase camelCase text strings

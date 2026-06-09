@@ -12,7 +12,7 @@ spec:
     targetRevision: HEAD
     path: apps/devices/base # Pointing to the new folder structure
   destination:
-    server: 'https://kubernetes.default.svc'
+    server: "https://kubernetes.default.svc"
     namespace: esp32
   syncPolicy:
     automated:

@@ -6,7 +6,7 @@ public static class PathResolver
     {
         // 1. First, check if we are running locally on your Mac path
         string localMacPath = "/Users/raj/Dev/k3s";
-        
+
         if (Directory.Exists(localMacPath))
         {
             return localMacPath;

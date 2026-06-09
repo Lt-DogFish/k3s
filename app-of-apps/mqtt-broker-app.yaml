@@ -12,7 +12,7 @@ spec:
     targetRevision: main
     path: apps/mqtt/base
   destination:
-    server: 'https://kubernetes.default.svc'
+    server: "https://kubernetes.default.svc"
     namespace: iot
   syncPolicy:
     automated:

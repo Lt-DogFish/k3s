@@ -1,2 +1,3 @@
 # k3s
-k3s GitOps Control Plane 
+
+k3s GitOps Control Plane

@@ -1,0 +1,5 @@
+{
+	"yaml.schemas": {
+		"https://www.schemastore.org/yamlfmt.json": "file:///Users/raj/Dev/k3s/KubeOPS/dev/portfolio/deployment.yaml"
+	}
+}

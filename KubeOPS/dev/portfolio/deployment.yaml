@@ -14,6 +14,6 @@ spec:
         app: portfolio
     spec:
       containers:
-      - image: ghcr.io/lt-dogfish/portfolio-site:latest
-        imagePullPolicy: Always
-        name: web
+        - image: ghcr.io/lt-dogfish/portfolio-site:latest
+          imagePullPolicy: Always
+          name: web
