@@ -77,7 +77,7 @@ def on_birth_message(client, userdata, msg):
 
 
 # --- MQTT Initialization ---
-print("Initializing ESP32 GitOps Operator...", flush=True)
+print("Initializing ESP32 GitOps Operator (Jun10 1230)...", flush=True)
 
 # Connect to local cluster core
 # Connect to local Mosquitto broker
