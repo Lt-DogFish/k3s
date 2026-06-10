@@ -6,10 +6,7 @@ from kubernetes import client, config, watch # type: ignore
 # --- MQTT Callback Functions ---
 
 def on_connect(client, userdata, flags, rc):
-    """
-    This runs automatically as soon as the background loop establishes
-    or fails a connection with the Mosquitto broker.
-    """
+
     if rc == 0:
         print("SUCCESS: Connected to Mosquitto Broker successfully!", flush=True)
     else:
@@ -29,7 +26,7 @@ def on_publish(client, userdata, mid):
     This fires when a message has traveled across the wire and the broker
     has acknowledged receipt (crucial for QoS 1).
     """
-    print(f"📨 Packet Delivery Confirmed by Broker (Message ID: {mid})", flush=True)
+    print(f"Packet Delivery Confirmed by Broker (Message ID: {mid})", flush=True)
 
 
 # --- Core Initialization ---
