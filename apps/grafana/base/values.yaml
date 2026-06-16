@@ -3,8 +3,11 @@ alertmanager:
 prometheus:
   prometheusSpec:
     retention: 10d
-    storageSpec:
+    # Fixes the Kustomize parser mismatch by using a direct storage mapping
+    storage:
       volumeClaimTemplate:
+        apiVersion: v1
+        kind: PersistentVolumeClaim
         spec:
           accessModes: ["ReadWriteOnce"]
           storageClassName: "local-path"
