@@ -19,11 +19,11 @@ helmCharts:
 # FORCE CRDS TO REGISTER FIRST -- there are two part to the creation process
 # and they all depend on each other but argocd panicks thinking there are lost / nonpresent
 #resrources even though they are just waiting for the CRDs to be registered before they can be created. This is a workaround to force the CRDs to be registered first before any of the other resources are created.
-patches:
-  - target:
-      group: apiextensions.k8s.io
-      kind: CustomResourceDefinition
-    patch: |-
-      - op: add
-        path: /metadata/annotations/argocd.argoproj.io~1sync-wave
-        value: "-5"
+# patches:
+#   - target:
+#       group: apiextensions.k8s.io
+#       kind: CustomResourceDefinition
+#     patch: |-
+#       - op: add
+#         path: /metadata/annotations/argocd.argoproj.io~1sync-wave
+#         value: "-5"
