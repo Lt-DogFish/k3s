@@ -1,0 +1,20 @@
+alertmanager:
+  enabled: true
+prometheus:
+  prometheusSpec:
+    retention: 10d
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          storageClassName: "local-path"
+          resources:
+            requests:
+              storage: 10Gi
+grafana:
+  enabled: true
+  ingress:
+    enabled: false #disabled because handled via custom ingress.yaml
+  grafana.ini:
+    server:
+      root_url: https://grafana.ravijey.com
