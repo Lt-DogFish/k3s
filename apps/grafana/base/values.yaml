@@ -31,3 +31,9 @@ grafana:
   grafana.ini:
     server:
       root_url: https://grafana.ravijey.com
+
+prometheus-node-exporter:
+  extraArgs:
+    #Scrub temperature sensor info and data from nodes
+    - --collector.hwmon
+    - --collector.thermal_zone
