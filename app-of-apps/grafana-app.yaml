@@ -25,3 +25,4 @@ spec:
       selfHeal: true
     syncOptions:
       - ServerSideApply=true #to handle large Prometheus CRDs
+      - SkipDryRunOnMissingResource=true #to avoid dry-run errors for CRDs that aren't yet created but THIS IS ONLY SAFE because we know for sure all rss will be created soon.
