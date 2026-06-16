@@ -1,19 +1,29 @@
 alertmanager:
   enabled: true
+# prometheus:
+#   prometheusSpec:
+#     retention: 10d
+#     # Fixes the Kustomize parser mismatch by using a direct storage mapping
+#     storage:
+#       volumeClaimTemplate:
+#         apiVersion: v1
+#         kind: PersistentVolumeClaim
+#         spec:
+#           accessModes: ["ReadWriteOnce"]
+#           storageClassName: "local-path"
+#           resources:
+#             requests:
+#               storage: 10Gi
+
 prometheus:
   prometheusSpec:
-    retention: 10d
-    # Fixes the Kustomize parser mismatch by using a direct storage mapping
-    storage:
-      volumeClaimTemplate:
-        apiVersion: v1
-        kind: PersistentVolumeClaim
-        spec:
-          accessModes: ["ReadWriteOnce"]
-          storageClassName: "local-path"
-          resources:
-            requests:
-              storage: 10Gi
+    retention: 2d # Keeping retention low since data lives in memory for now
+
+    # This forces the operator to use node RAM/scratch space instead of a physical PVC
+    storageSpec:
+      emptyDir:
+        medium: ""
+
 grafana:
   enabled: true
   ingress:
