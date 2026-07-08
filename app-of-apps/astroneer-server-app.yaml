@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: astroneer-server
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io # Deletes resources if you delete the app
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:Lt-DogFish/k3s.git
+    targetRevision: main
+    path: apps/astroneer/base
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: astroneer
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true # Automatically creates the 'astroneer' namespace

@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: astroneer-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: astroneer-server
+  # Recreate strategy is highly recommended for game servers using PVCs to prevent multi-attach errors
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: astroneer-server
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: node2-48ecc894
+
+      containers:
+        - name: astroneer
+          image: ghcr.io/birdhimself/astroneer-server:latest
+          imagePullPolicy: IfNotPresent
+
+          # Interactive flags needed for the launcher/wine console emulation inside the container
+          stdin: true
+          tty: true
+
+          ports:
+            - containerPort: 7777
+              protocol: UDP
+              name: game-port
+
+          env:
+            - name: ASTRO_SERVER_PUBLIC_IP
+              value: "100.126.131.100"
+            - name: DEBUG
+              value: "false"
+            # As of recent updates, server encryption works fine. Set to true if you need to bypass it.
+            - name: DISABLE_ENCRYPTION
+              value: "false"
+
+          resources:
+            limits:
+              memory: 4Gi
+              cpu: "2"
+            requests:
+              memory: 2Gi
+              cpu: "1"
+
+          volumeMounts:
+            - name: server-data
+              mountPath: /astrotux/AstroneerServer/Astro/Saved
+
+      volumes:
+        - name: server-data
+          persistentVolumeClaim:
+            claimName: astroneer-pvc # Maps directly to your pvc.yaml definition
