@@ -11,4 +11,4 @@ spec:
       protocol: UDP
       port: 7777 # The port the cluster pods use internally
       targetPort: 7777 # The port inside the container
-      nodePort: 37777 # The port exposed on node2's host/Tailscale IP
+      nodePort: 31777 # The port exposed on node2's host/Tailscale IP
