@@ -3,6 +3,9 @@ kind: Application
 metadata:
   name: grafana
   namespace: argocd
+  annotations:
+    # Suspending app to adress memory leak issue in the future.
+    argocd.argoproj.io/suspension-state: suspended
 
 spec:
   project: default
