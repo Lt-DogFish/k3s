@@ -40,7 +40,9 @@ spec:
             - name: DEBUG
               value: "false"
             - name: DISABLE_ENCRYPTION
-              value: "false"
+              value: "true"
+            - name: ASTRO_SERVER_DISABLE_ENCRYPTION
+              value: "true"
           resources:
             limits:
               memory: 4Gi
