@@ -35,6 +35,8 @@ spec:
             #local Ip
             - name: ASTRO_SERVER_PUBLIC_IP
               value: "192.168.1.163"
+            - name: ASTRO_SERVER_PORT
+              value: "7777"
             - name: DEBUG
               value: "false"
             - name: DISABLE_ENCRYPTION
