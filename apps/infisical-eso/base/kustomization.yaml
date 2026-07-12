@@ -1,0 +1,40 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Default namespace for accompanying file resources like n8n
+namespace: infisical-eso
+
+resources: []
+
+helmCharts:
+  # ----------------------------------------------------
+  # 1. INFISICAL SECRETS VAULT
+  # ----------------------------------------------------
+  - name: infisical-standalone
+    repo: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
+    version: 0.3.3 # Replace with the latest version you want to target
+    releaseName: infisical
+    namespace: infisical # Chart routes itself to its own namespace
+    valuesInline:
+      ingress:
+        enabled: true
+        className: "traefik"
+        annotations:
+          ingress.kubernetes.io/ssl-redirect: "true"
+        hosts:
+          - host: infisical.ravijey.com
+            paths:
+              - path: /
+                pathType: Prefix
+
+  # ----------------------------------------------------
+  # 2. EXTERNAL SECRETS OPERATOR (ESO)
+  # ----------------------------------------------------
+  - name: external-secrets
+    repo: https://charts.external-secrets.io
+    version: 0.9.11 # Replace with the latest version you want to target
+    releaseName: external-secrets
+    namespace: external-secrets
+    includeCRDs: true # Crucial: forces Kustomize to generate the SecretStore CRDs
+    valuesInline:
+      installCRDs: true

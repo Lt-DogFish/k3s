@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infisical-eso
+  namespace: argocd
+
+spec:
+  project: default
+
+  source:
+    repoURL: git@github.com:Lt-DogFish/k3s.git
+    targetRevision: main
+    path: apps/infisical-eso/base
+
+    kustomize:
+      buildOptions: "--enable-helm"
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: infisical-eso
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
