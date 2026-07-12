@@ -1,0 +1,40 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+#name space precreated via Lens
+namespace: n8n
+
+resources: []
+
+helmCharts:
+  - name: n8n
+    repo: https://8gears.github.io/n8n-helm_chart
+    version: 0.14.0
+    releaseName: n8n
+    valuesInline:
+      # Instruct n8n to pull the encryption key from the secret made in Lens
+      secret:
+        name: n8n-secrets
+        key: ENCRYPTION_KEY
+
+      # Scaling configuration to 1
+      replicaCount: 1
+
+      # Persistent storage
+      persistence:
+        enabled: true
+        size: 5Gi
+        accessModes:
+          - ReadWriteOnce
+
+      # Traefik routing integration
+      ingress:
+        enabled: true
+        className: "traefik"
+        annotations:
+          ingress.kubernetes.io/ssl-redirect: "true"
+        hosts:
+          - host: n8n.ravijey.com
+            paths:
+              - path: /
+                pathType: Prefix
