@@ -17,7 +17,7 @@ helmCharts:
     releaseName: infisical
     #namespace: infisical # Chart routes itself to its own namespace -> removed due to global injection
     valuesInline:
-      nginx:
+      ingress-nginx:
         enabled: false
       ingress:
         enabled: true
