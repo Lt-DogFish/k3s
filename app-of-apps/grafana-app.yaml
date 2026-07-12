@@ -1,31 +1,31 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: grafana
-  namespace: argocd
-  annotations:
-    # Suspending app to adress memory leak issue in the future.
-    argocd.argoproj.io/suspension-state: suspended
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: grafana
+#   namespace: argocd
+#   annotations:
+#     # Suspending app to adress memory leak issue in the future.
+#     argocd.argoproj.io/suspension-state: suspended
 
-spec:
-  project: default
+# spec:
+#   project: default
 
-  source:
-    repoURL: git@github.com:Lt-DogFish/k3s.git
-    targetRevision: main
-    path: apps/grafana/base
+#   source:
+#     repoURL: git@github.com:Lt-DogFish/k3s.git
+#     targetRevision: main
+#     path: apps/grafana/base
 
-    kustomize:
-      buildOptions: "--enable-helm"
+#     kustomize:
+#       buildOptions: "--enable-helm"
 
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: monitoring
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: monitoring
 
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - ServerSideApply=true #to handle large Prometheus CRDs
-      - SkipDryRunOnMissingResource=true #to avoid dry-run errors for CRDs that aren't yet created but THIS IS ONLY SAFE because we know for sure all rss will be created soon.
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#       - ServerSideApply=true #to handle large Prometheus CRDs
+#       - SkipDryRunOnMissingResource=true #to avoid dry-run errors for CRDs that aren't yet created but THIS IS ONLY SAFE because we know for sure all rss will be created soon.
