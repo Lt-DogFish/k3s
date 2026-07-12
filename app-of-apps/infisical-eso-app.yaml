@@ -17,7 +17,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    #namespace: infisical-eso generates default namepsaces throuhg kustomization HELM chart
+    namespace: infisical-eso #generates default namepsaces throuhg kustomization HELM chart -> temporarily reneabled for testing
 
   syncPolicy:
     automated:
