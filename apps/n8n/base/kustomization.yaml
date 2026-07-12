@@ -13,9 +13,8 @@ helmCharts:
     releaseName: n8n
     valuesInline:
       # Instruct n8n to pull the encryption key from the secret made in Lens
-      secret:
-        name: n8n-secrets
-        key: ENCRYPTION_KEY
+      secretRefs:
+        existingSecret: "n8n-secrets"
 
       # Scaling configuration to 1
       replicaCount: 1
