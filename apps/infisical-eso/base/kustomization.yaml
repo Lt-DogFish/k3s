@@ -4,7 +4,8 @@ kind: Kustomization
 #inject global namespace into every generated resource
 namespace: infisical-eso
 
-resources: []
+resources:
+  - infisical-namespace.yaml
 
 helmCharts:
   # ----------------------------------------------------
