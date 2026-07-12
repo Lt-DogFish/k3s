@@ -9,7 +9,7 @@ spec:
 
   source:
     repoURL: git@github.com:Lt-DogFish/k3s.git
-    targetRevision: HEAD
+    targetRevision: main
     path: apps/n8n/base
 
     kustomize:
