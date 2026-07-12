@@ -8,8 +8,8 @@ resources: []
 
 helmCharts:
   - name: n8n
-    repo: https://8gears.github.io/n8n-helm_chart
-    version: 0.14.0
+    repo: oci://ghcr.io/n8n-io/n8n-helm-chart
+    version: 1.4.3
     releaseName: n8n
     valuesInline:
       # Instruct n8n to pull the encryption key from the secret made in Lens
