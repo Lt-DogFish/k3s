@@ -12,7 +12,7 @@ helmCharts:
   # ----------------------------------------------------
   - name: infisical-standalone
     repo: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
-    version: 0.3.3 # Replace with the latest version you want to target
+    version: 1.7.3
     releaseName: infisical
     namespace: infisical # Chart routes itself to its own namespace
     valuesInline:
